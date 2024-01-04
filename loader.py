@@ -11,8 +11,8 @@ BOT_TOKEN = str(os.environ.get('BOT_TOKEN'))
 SHEET_LINK = str(os.environ.get('SHEET_LINK'))
 CODE = '3124'
 
-# storage = RedisStorage2(db=2)
-storage = MemoryStorage()
+storage = RedisStorage2(db=7)
+# storage = MemoryStorage()
 
 bot = Bot(token=BOT_TOKEN, parse_mode="HTML")
 dp = Dispatcher(bot, storage=storage)
