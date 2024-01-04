@@ -6,8 +6,10 @@ import os
 
 
 logging.basicConfig(level=logging.WARNING)
-ADMIN_ID = str(os.environ.get('ADMIN_ID'))
+
 BOT_TOKEN = str(os.environ.get('BOT_TOKEN'))
+SHEET_LINK = str(os.environ.get('SHEET_LINK'))
+CODE = '3124'
 
 # storage = RedisStorage2(db=2)
 storage = MemoryStorage()
