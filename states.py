@@ -19,3 +19,6 @@ class State(StatesGroup):
     entering_media = State()
     entering_phone = State()
     ended = State()
+    offered_code = State()
+    offered_look_gift = State()
+    offered_rebus = State()

@@ -4,6 +4,7 @@ from aiogram.dispatcher import FSMContext
 import texts
 from states import State
 import keyboards as kb
+import aiotable
 
 
 @dp.message_handler(state=State.entering_gift_names)
@@ -24,6 +25,7 @@ async def send_welcome(message: types.Message, state: FSMContext):
         await message.answer(texts.success_gifts_name3)
         await message.answer(texts.ask_for_age_type, reply_markup=kb.age_type_kb)
         await State.choosing_adult_childs.set()
+        await aiotable.update_cell(message.from_user.id, 6, 'Собирание информации')
         return
     
     if is_correct:

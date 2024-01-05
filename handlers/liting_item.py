@@ -4,6 +4,7 @@ from aiogram.dispatcher import FSMContext
 import texts
 from states import State
 import keyboards as kb
+import aiotable
 
 
 @dp.message_handler(state=State.choosing_item_to_lit)
@@ -31,12 +32,23 @@ async def send_welcome(message: types.Message, state: FSMContext):
     if is_correct_answer:
         with open('images/lit.mp4', 'rb') as video:
             await message.answer_video(video)
-        await message.answer(texts.success_riddle)
+        await message.answer(texts.right)
+        await message.answer(texts.success_riddle, reply_markup=kb.look_gift_kb)
+        await State.offered_look_gift.set()
+        await aiotable.update_cell(message.from_user.id, 6, '1961')
+    else:
+        await message.answer(texts.wrong_answer)
+
+
+
+@dp.message_handler(state=State.offered_look_gift)
+async def send_welcome(message: types.Message, state: FSMContext):
+    if message.text == texts.look_gift_btn:
         await message.answer(texts.ask_for_year1)
         with open('images/riddle.jpg', 'rb') as f:
             await message.answer_photo(f)
         await message.answer(texts.ask_for_year2, reply_markup=kb.hint_kb)
         await State.entering_year.set()
     else:
-        await message.answer(texts.wrong_answer)
+        await message.answer(texts.use_kb, reply_markup=kb.look_gift_kb)
     

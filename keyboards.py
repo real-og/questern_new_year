@@ -85,6 +85,18 @@ phone_keyboard.add(KeyboardButton(text=texts.phone_btn,
                                   request_contact=True,
                                  ))
 
+find_code_kb = ReplyKeyboardMarkup([[texts.find_code_btn]],
+                                     resize_keyboard=True,
+                                     one_time_keyboard=True)
+
+look_gift_kb = ReplyKeyboardMarkup([[texts.look_gift_btn]],
+                                     resize_keyboard=True,
+                                     one_time_keyboard=True)
+
+read_letter_kb = ReplyKeyboardMarkup([[texts.read_letter_btn]],
+                                     resize_keyboard=True,
+                                     one_time_keyboard=True)
+
 
 
 
