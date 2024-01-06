@@ -28,7 +28,7 @@ async def append_user(code, id: str, username: str, tg_name):
         if cell is None:
             await sheet.append_row([code, str(datetime.datetime.now()), id, username, tg_name])
         else:
-            await sheet.update_cell(cell.row, 1, str(datetime.datetime.now()))
+            await sheet.update_cell(cell.row, 2, str(datetime.datetime.now()))
              
         
 
