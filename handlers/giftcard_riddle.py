@@ -27,7 +27,7 @@ async def send_welcome(message: types.Message, state: FSMContext):
         await message.answer(texts.success_year2,  reply_markup=kb.read_letter_kb)
 
         await State.offered_rebus.set()
-        await aiotable.update_cell(message.from_user.id, 6, 'Ребусы-подарки')
+        await aiotable.update_cell(message.from_user.id, 7, 'Ребусы-подарки')
     else:
         await message.answer(texts.wrong_answer, reply_markup=kb.hint_kb)
 

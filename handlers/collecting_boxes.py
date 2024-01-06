@@ -79,7 +79,7 @@ async def send_welcome(message: types.Message, state: FSMContext):
     if message.text in [texts.gift1_short, texts.gift2_short, texts.gift3_short,]:
         await message.answer(texts.choose_media, reply_markup=kb.choose_media_kb)
         await State.entering_media.set()
-        await aiotable.update_cell(message.from_user.id, 11, message.text)
+        await aiotable.update_cell(message.from_user.id, 12, message.text)
     else:
         await message.answer(texts.use_kb, reply_markup=kb.generate_gifts_kb(gifts))
 

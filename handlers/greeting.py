@@ -23,7 +23,7 @@ async def send_welcome(message: types.Message, state: FSMContext):
     name = message.text.strip()
     await message.answer(texts.generate_name_greeting(name), reply_markup=kb.come_in_kb)
     await State.after_name_entered.set()
-    await aiotable.update_cell(message.from_user.id, 5, name)
+    await aiotable.update_cell(message.from_user.id, 6, name)
 
 
 @dp.message_handler(state=State.after_name_entered)

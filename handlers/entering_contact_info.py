@@ -12,7 +12,7 @@ async def send_welcome(message: types.Message, state: FSMContext):
     if message.text in [texts.telegram_btn, texts.whatsapp_btn]:
         await message.answer(texts.enter_phone, reply_markup=kb.phone_keyboard)
         await State.entering_phone.set()
-        await aiotable.update_cell(message.from_user.id, 12, message.text)
+        await aiotable.update_cell(message.from_user.id, 13, message.text)
     else:
         await message.answer(texts.use_kb, reply_markup=kb.choose_media_kb)
 
@@ -27,7 +27,7 @@ async def set_phone_handler(message: types.Message, state: FSMContext):
         await message.answer_photo(photo)
     await message.answer(texts.finish2)
     await message.answer(texts.finish3)
-    await aiotable.update_cell(message.from_user.id, 10, phone)
+    await aiotable.update_cell(message.from_user.id, 11, phone)
     await State.ended.set()
     
 

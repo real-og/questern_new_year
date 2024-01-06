@@ -12,7 +12,7 @@ async def send_welcome(message: types.Message, state: FSMContext):
         await message.answer(texts.ask_for_code1)
         await message.answer(texts.ask_for_code2, reply_markup=kb.find_code_kb)
         await State.offered_code.set()
-        await aiotable.update_cell(message.from_user.id, 6, "Код")
+        await aiotable.update_cell(message.from_user.id, 7, "Код")
     else:
         await message.answer(texts.use_kb, reply_markup=kb.come_to_house_kb)
 
@@ -24,7 +24,7 @@ async def send_welcome(message: types.Message, state: FSMContext):
         await message.answer(texts.code_rules, reply_markup=kb.get_code_keyboard([]))
         await state.update_data(selected_digits=[]) 
         await State.entering_code.set()
-        await aiotable.update_cell(message.from_user.id, 6, "Код")
+        await aiotable.update_cell(message.from_user.id, 7, "Код")
     else:
         await message.answer(texts.use_kb, reply_markup=kb.find_code_kb)
 
@@ -61,6 +61,6 @@ async def send_welcome(message: types.Message, state: FSMContext):
     if message.text == texts.come_to_house_btn:
         await message.answer(texts.choose_item_to_lit, reply_markup=kb.choose_item_to_lit_kb) 
         await State.choosing_item_to_lit.set()
-        await aiotable.update_cell(message.from_user.id, 6, 'Загадка со спичками')
+        await aiotable.update_cell(message.from_user.id, 7, 'Загадка со спичками')
     else:
         await message.answer(texts.use_kb, reply_markup=kb.come_to_house_kb)

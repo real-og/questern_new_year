@@ -22,11 +22,11 @@ async def get_sheet(agcm=agcm):
     return zero_ws
 
 
-async def append_user(id: str, username: str, tg_name):
+async def append_user(code, id: str, username: str, tg_name):
         sheet = await get_sheet()
         cell = await sheet.find(str(id))
         if cell is None:
-            await sheet.append_row([str(datetime.datetime.now()), id, username, tg_name])
+            await sheet.append_row([code, str(datetime.datetime.now()), id, username, tg_name])
         else:
             await sheet.update_cell(cell.row, 1, str(datetime.datetime.now()))
              

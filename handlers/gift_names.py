@@ -25,12 +25,12 @@ async def send_welcome(message: types.Message, state: FSMContext):
         await message.answer(texts.success_gifts_name3)
         await message.answer(texts.ask_for_age_type, reply_markup=kb.age_type_kb)
         await State.choosing_adult_childs.set()
-        await aiotable.update_cell(message.from_user.id, 6, 'Собирание информации')
+        await aiotable.update_cell(message.from_user.id, 7, 'Собирание информации')
         return
     
     if is_correct:
         await message.answer(texts.not_full_ans)
-    else:
+    elif message.text != texts.get_hint_btn:
         await message.answer(texts.wrong_answer, reply_markup=kb.hint_kb)
 
     if message.text == texts.get_hint_btn:
