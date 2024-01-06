@@ -6,17 +6,6 @@ from states import State
 import keyboards as kb
 import aiotable
 
-@dp.message_handler(state=State.starting)
-async def send_welcome(message: types.Message, state: FSMContext):
-    if message.text == texts.start_btn:
-        with open('images/lady.jpg', 'rb') as photo:
-            await message.answer_photo(photo)
-        await message.answer(texts.hello)
-        await message.answer(texts.ask_name)
-        await State.entering_name.set()
-    else:
-        await message.answer(texts.use_kb, reply_markup=kb.start_quest_kb)
-
 
 @dp.message_handler(state=State.entering_name)
 async def send_welcome(message: types.Message, state: FSMContext):

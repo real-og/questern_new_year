@@ -27,7 +27,9 @@ async def send_welcome(message: types.Message, state: FSMContext):
                 elif len(gifts) == 2:
                     await message.answer(texts.left_1, reply_markup=kb.boxes_kb)
                 elif len(gifts) == 3:
-                    await message.answer(texts.left_0, reply_markup=kb.boxes_kb)
+                    await message.answer(texts.left_0)
+                    await message.answer(texts.choose_gift, reply_markup=kb.generate_gifts_kb(gifts))
+                    await State.choosing_gift.set()
 
 
         elif message.text == texts.box4_btn:
@@ -41,7 +43,9 @@ async def send_welcome(message: types.Message, state: FSMContext):
                 elif len(gifts) == 2:
                     await message.answer(texts.left_1, reply_markup=kb.boxes_kb)
                 elif len(gifts) == 3:
-                    await message.answer(texts.left_0, reply_markup=kb.boxes_kb)
+                    await message.answer(texts.left_0)
+                    await message.answer(texts.choose_gift, reply_markup=kb.generate_gifts_kb(gifts))
+                    await State.choosing_gift.set()
 
         elif message.text == texts.box5_btn:
             with open('images/video.jpg', 'rb') as photo:
@@ -54,7 +58,9 @@ async def send_welcome(message: types.Message, state: FSMContext):
                 elif len(gifts) == 2:
                     await message.answer(texts.left_1, reply_markup=kb.boxes_kb)
                 elif len(gifts) == 3:
-                    await message.answer(texts.left_0, reply_markup=kb.boxes_kb)
+                    await message.answer(texts.left_0)
+                    await message.answer(texts.choose_gift, reply_markup=kb.generate_gifts_kb(gifts))
+                    await State.choosing_gift.set()
 
         else:
             await message.answer(texts.empty_box, reply_markup=kb.boxes_kb)

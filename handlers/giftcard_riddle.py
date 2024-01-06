@@ -24,7 +24,9 @@ async def send_welcome(message: types.Message, state: FSMContext):
         with open('images/riddle_ans.jpg', 'rb') as photo:
             await message.answer_photo(photo)
         await message.answer(texts.success_year1)
-        await message.answer(texts.success_year2,  reply_markup=kb.read_letter_kb)
+        await message.answer(texts.success_year2, reply_markup=kb.read_letter_kb)
+
+        
 
         await State.offered_rebus.set()
         await aiotable.update_cell(message.from_user.id, 7, 'Ребусы-подарки')
@@ -37,7 +39,8 @@ async def send_welcome(message: types.Message, state: FSMContext):
 async def send_welcome(message: types.Message, state: FSMContext):
     if message.text == texts.read_letter_btn:
         await message.answer(texts.modern_card)
-        await message.answer(texts.ask_for_gifts_name, reply_markup=kb.hint_kb)
+        await message.answer(texts.ask_for_gifts_name)
+        await message.answer(texts.tap_button, reply_markup=kb.hint_kb)
         await state.update_data(known_gifts=[])
         await State.entering_gift_names.set()
     else:
