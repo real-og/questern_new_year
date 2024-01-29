@@ -1,4 +1,4 @@
-from loader import dp, CODE, bot
+from loader import dp, CODE, bot, ADMIN_ID
 from aiogram import types
 from aiogram.dispatcher import FSMContext
 import texts
@@ -29,6 +29,10 @@ async def set_phone_handler(message: types.Message, state: FSMContext):
     await message.answer(texts.finish3)
     await aiotable.update_cell(message.from_user.id, 11, phone)
     await State.ended.set()
+    try:
+        await bot.send_message(ADMIN_ID, f'{message.from_user.id} - {message.from_user.username} закончил снегурочку')
+    except:
+        pass
     
 
 
